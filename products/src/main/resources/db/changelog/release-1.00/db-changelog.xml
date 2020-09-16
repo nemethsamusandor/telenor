@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="cr-1" author="Sandor Nemeth">
+        <comment>
+            Create PRODUCT table
+        </comment>
+        <createSequence sequenceName="productSequence" startValue="1" />
+        <createTable tableName="PRODUCT">
+            <column name="ID" type="NUMBER(19,0)" defaultValueComputed="nextval('productSequence')">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="TYPE" type="VARCHAR2(255 CHAR)" />
+            <column name="PROPERTY" type="VARCHAR2(255 CHAR)"/>
+            <column name="PRICE" type="NUMBER(19,2)"/>
+            <column name="STOREADDRESS" type="VARCHAR2(255 CHAR)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="cr-2" author="Sandor Nemeth">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="PRODUCT" />
+        </preConditions>
+        <comment>
+            Load data to PRODUCT table from data.csv if table is exist
+        </comment>
+
+        <loadData tableName="PRODUCT" file="db/changelog/data/data.csv">
+            <column name="TYPE" header="Product type" type="string"/>
+            <column name="PROPERTY" header="Product properties" type="string"/>
+            <column name="PRICE" header="Price" type="numeric"/>
+            <column name="STOREADDRESS" header="Store address" type="string"/>
+        </loadData>
+    </changeSet>
+    
+</databaseChangeLog>
