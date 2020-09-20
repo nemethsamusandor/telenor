@@ -32,4 +32,14 @@ RestAPI endpoint is accessible on port 8329.
 
 Open ```http://localhost:8329/product``` with the requires query parameters in Browser, Postman, Terminal (curl) or other tools
 
+Query Parameter			Description
+*type*					The product type. (String. Can be 'phone' or 'subscription')
+*min_price*				The minimum price in SEK. (Number)
+*max_price*				The maximum price in SEK. (Number)
+*city*					The city in which a store is located. (String)
+*property*				The name of the property. (String. Can be 'color' or 'gb_limit')
+*property:color*			The color of the phone. (String)
+*property:gb_limit_min* 	The minimum GB limit of the subscription. (Number)
+*property:gb_limit_max* 	The maximum GB limit of the subscription. (Number)
+
 e.g. curl http://localhost:8329/product?type=phone
