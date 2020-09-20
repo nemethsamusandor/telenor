@@ -1,15 +1,18 @@
 # Telenor Interview Project
 
 ## Project technologies
-* Maven: Apache Maven 3.6.3
-* Java: 1.8.0_202, vendor: AdoptOpenJdk
-* Docker: version 19.03.8, build afacb8b
+* Apache Maven 3.6.3
+* Java 1.8.0_202, vendor: AdoptOpenJdk
+* Docker version 19.03.8, build afacb8b
 * IntelliJ Idea 2018.3.5
 * Spring boot 2.3.3
 * Liquibase 3.8.0
 * H2 database 1.4.200
 
 ---
+
+## Clone project from GitHub
+```git clone https://github.com/nemethsamusandor/telenor.git```
 
 ## Maven Build
 Run ```mvn clean install``` to build the complete project with tests
