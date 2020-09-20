@@ -28,12 +28,12 @@
             Load data to PRODUCT table from data.csv if table is exist
         </comment>
 
-        <loadData tableName="PRODUCT" file="db/changelog/data/data.csv">
+        <loadData tableName="PRODUCT" file="db/changelog/data/test-data.csv">
             <column name="TYPE" header="Product type" type="string"/>
             <column name="PROPERTY" header="Product properties" type="string"/>
             <column name="PRICE" header="Price" type="numeric"/>
             <column name="STOREADDRESS" header="Store address" type="string"/>
         </loadData>
     </changeSet>
-    
+
 </databaseChangeLog>

@@ -1,52 +1,30 @@
-# Welcome to Telenor's take-home assignment
-**Congratulations on making it this far! Great job!**
-The purpose of this assignment is to give you an opportunity to demonstrate some code.
-The requirement is simple, but it is important to demonstrate clean code and good test coverage.
-Do the absolute minimum work required for the application. Out of the box configurations and in-memory DBs will do just fine.
-There is no time limit, but it shouldn't take more than 60-90min. 
+#Telenor Interview Project
 
----
+* Project technologies
+** Maven: Apache Maven 3.6.3
+** Java: 1.8.0_202, vendor: AdoptOpenJdk
+** Docker: version 19.03.8, build afacb8b
+** IntelliJ Idea 2018.3.5
+** Spring boot 2.3.3
+** Liquibase 3.8.0
 
-In a basic Dockerized Springboot Maven application, build a single REST API endpoint that returns a filtered set of products from the provided data in the data.csv file
+* Maven Build
+Run "mvn clean install" to build the complete project with tests
+or
+"mvn clean install -DskipTests" without tests
 
-GET /product
-Query Parameter			Description
-type					The product type. (String. Can be 'phone' or 'subscription')
-min_price				The minimum price in SEK. (Number)
-max_price				The maximum price in SEK. (Number)
-city					The city in which a store is located. (String)
-property				The name of the property. (String. Can be 'color' or 'gb_limit')
-property:color			The color of the phone. (String)
-property:gb_limit_min 	The minimum GB limit of the subscription. (Number)
-property:gb_limit_max 	The maximum GB limit of the subscription. (Number)
+mvnw command also can be used instead of mvn from the project root
 
-The expected response is a JSON array with the products in a 'data' wrapper. 
+* Docker build and run
+** Run Docker build "docker build -t se.telenor.products:1.00 ." to create 0docker image
+** Run docker image "docker run --publish 8239:8080 --detach --name telenor.products se.telenor.products:1.00"
 
-Example: GET /product?type=subscription&max_price=1000&city=Stockholm
-{
-	data: [ 
-		{
-		    type: 'subscription',
-		    properties: 'gb_limit:10',
-		    price: '704.00',
-		    store_address: 'Dana gärdet, Stockholm'
-	  	},
-	  	{
-		    type: 'subscription',
-		    properties: 'gb_limit:10',
-		    price: '200.00',
-		    store_address: 'Octavia gränden, Stockholm'
-	  	}
-	]
-}
+RestAPI Server will run on port 8329.
 
-Your solution should correctly filter any combination of API parameters and use some kind of a datastore.
-All parameters are optional, all minimum and maximum fields should be inclusive (e.g. min_price=100&max_price=1000 should return items with price 100, 200... or 1000 SEK). 
-The applications does not need to support multiple values (e.g. type=phone,subscription or property.color=green,red).
+* Project source available on GitHub
+** https://github.com/nemethsamusandor/telenor
 
-We should be able to:
-- build the application with Maven
-- build the Docker image and run it
-- make requests to verify the behavior
+* Terminal commands
+Open "http://localhost:8329/product" with the requires query parameters in Browser, Postman, Terminal (curl) or other tools
 
-Please provide an archive with the source code and a list of the terminal commands to build and run the application.
+e.g. curl http://localhost:8329/product?type=phone
