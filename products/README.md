@@ -13,7 +13,9 @@
 
 ## Maven Build
 Run ```mvn clean install``` to build the complete project with tests
+
 or
+
 ```mvn clean install -DskipTests``` without tests
 
 ```./mvnw``` command also can be used instead of mvn from the project root
