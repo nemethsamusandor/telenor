@@ -30,7 +30,7 @@ or
 # Test links
 RestAPI endpoint is accessible on port 8329.
 
-Open ```http://localhost:8329/product``` with the requires query parameters in Browser, Postman, Terminal (curl) or other tools
+Open ```http://localhost:8329/product``` with the required query parameters in Browser, Postman, Terminal (curl) or other tools
 
 Query Parameter		    | Description
 ----------------------- | -----------------------------------------------------------------
